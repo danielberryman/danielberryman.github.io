@@ -1,0 +1,50 @@
+header {
+  padding: 34px 0 0;
+}
+
+.masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line-bright);
+}
+
+@media (min-width: 640px) {
+  .masthead {
+    align-items: baseline;
+  }
+}
+
+.name {
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--vapor);
+  font-size: 0.62rem;
+}
+
+@media (min-width: 640px) {
+  nav {
+    gap: 24px;
+  }
+}
+
+.theme-toggle {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--vapor);
+  font: inherit;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--purple-light);
+}
