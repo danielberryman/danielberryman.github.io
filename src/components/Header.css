@@ -18,8 +18,8 @@ header {
 }
 
 .avatar {
-  width: 28px;
-  height: 28px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1px solid var(--line-bright);
   object-fit: cover;
