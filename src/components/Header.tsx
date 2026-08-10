@@ -7,8 +7,9 @@ function Header() {
   return (
     <header>
       <div className="wrap masthead">
-        <a href="/" className="name eyebrow">
-          Daniel Berryman
+        <a href="/" className="brand">
+          <img className="avatar" src="/avatar.jpg" alt="" />
+          <span className="name eyebrow">Daniel Berryman</span>
         </a>
 
         <nav>

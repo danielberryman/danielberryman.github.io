@@ -53,14 +53,7 @@ html {
 body {
   margin: 0;
   color: var(--signal);
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0 12%,
-      color-mix(in srgb, var(--purple-light) 5%, transparent) 12% calc(12% + 1px),
-      transparent calc(12% + 1px)
-    ),
-    var(--void);
+  background: var(--void);
   font-family: var(--sans);
   line-height: 1.6;
   transition:

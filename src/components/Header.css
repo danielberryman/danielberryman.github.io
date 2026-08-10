@@ -5,16 +5,24 @@ header {
 .masthead {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 30px;
   padding-bottom: 18px;
   border-bottom: 1px solid var(--line-bright);
 }
 
-@media (min-width: 640px) {
-  .masthead {
-    align-items: baseline;
-  }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--line-bright);
+  object-fit: cover;
 }
 
 .name {
