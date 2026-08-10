@@ -1,0 +1,30 @@
+#hero {
+  padding: 4rem 1rem 2rem;
+  text-align: center;
+}
+
+.positioning {
+  max-width: 40rem;
+  margin: 1rem auto 0;
+  opacity: 0.8;
+}
+
+#case-studies,
+#contact {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+#case-studies ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+#case-studies li {
+  border: 1px solid var(--border, #ddd);
+  border-radius: 8px;
+  padding: 1rem;
+}
