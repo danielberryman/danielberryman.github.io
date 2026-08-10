@@ -11,16 +11,25 @@
 
 #case-studies,
 #contact {
+  width: 100%;
   max-width: 40rem;
   margin: 0 auto;
   padding: 2rem 1rem;
+  box-sizing: border-box;
 }
 
 #case-studies ul {
   list-style: none;
   padding: 0;
   display: grid;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  #case-studies ul {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
 }
 
 #case-studies li {

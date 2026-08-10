@@ -1,6 +1,12 @@
 import './App.css'
+import QuoteAside from './components/QuoteAside'
 
-const CASE_STUDIES = [
+interface CaseStudy {
+  name: string
+  blurb: string
+}
+
+const CASE_STUDIES: CaseStudy[] = [
   { name: 'exec-harness', blurb: 'Case study placeholder — content pass pending.' },
   { name: 'model-recurse', blurb: 'Case study placeholder — content pass pending.' },
   { name: 'hub', blurb: 'Case study placeholder — content pass pending.' },
@@ -33,6 +39,8 @@ function App() {
         <h2>Contact</h2>
         <p>Contact details placeholder.</p>
       </section>
+
+      <QuoteAside />
     </>
   )
 }
