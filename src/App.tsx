@@ -136,7 +136,7 @@ function App() {
           <section className="hero">
             <p className="hero-kicker">Software engineer · AI systems consultant · New York</p>
             <h1>
-              You’re paying for AI inference. <span>Can you trust it yet?</span>
+              You’re paying for AI inference. <span>Do you trust it yet?</span>
             </h1>
             <p className="hero-copy">
               I build the kit that makes AI work trustworthy. Every result gets checked, agents
