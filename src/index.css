@@ -1,44 +1,40 @@
 :root {
-  --void: #09070d;
-  --purple-black: #100a17;
-  --purple: #1a1024;
-  --purple-light: #9d7ab7;
+  --bg: #ffffff;
+  --bg-soft: #f6f7f9;
+  --line: #e4e7ec;
+  --line-strong: #cfd4dc;
 
-  --line: #382a45;
-  --line-bright: #5a4369;
+  --text: #101828;
+  --text-2: #475467;
+  --text-3: #667085;
 
-  --signal: #f2eef4;
-  --vapor: #aaa1ae;
-  --muted: #756d79;
+  --accent: #2f4bd6;
+  --accent-soft: #eef1fd;
+  --on-accent: #ffffff;
 
-  --amber: #f0a05b;
-  --cyan: #6ccfca;
-
+  --sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  --page: min(920px, calc(100% - 42px));
-
-  color-scheme: dark;
-}
-
-:root[data-theme='light'] {
-  --void: #faf7f2;
-  --purple-black: #f1ece4;
-  --purple: #ece4f2;
-  --purple-light: #6e4e8c;
-
-  --line: #ddd2e4;
-  --line-bright: #c3b2cf;
-
-  --signal: #201626;
-  --vapor: #5c5262;
-  --muted: #8a8090;
-
-  --amber: #c67328;
-  --cyan: #2a8f89;
+  --page: min(960px, calc(100% - 40px));
 
   color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0c111d;
+  --bg-soft: #131a2a;
+  --line: #222b3d;
+  --line-strong: #334056;
+
+  --text: #f2f4f7;
+  --text-2: #b4bcc8;
+  --text-3: #8a94a6;
+
+  --accent: #8098ff;
+  --accent-soft: #1a2240;
+  --on-accent: #0c111d;
+
+  color-scheme: dark;
 }
 
 * {
@@ -46,16 +42,18 @@
 }
 
 html {
-  background: var(--void);
+  background: var(--bg);
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  color: var(--signal);
-  background: var(--void);
+  color: var(--text);
+  background: var(--bg);
   font-family: var(--sans);
+  font-size: 17px;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
   transition:
     background-color 200ms ease,
     color 200ms ease;
@@ -66,21 +64,18 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  color: var(--purple-light);
-}
-
 h1,
 h2,
 h3 {
-  font-family: var(--mono);
-  font-weight: 500;
+  font-family: var(--sans);
+  font-weight: 650;
+  letter-spacing: -0.02em;
 }
 
-.eyebrow {
-  font-family: var(--mono);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-3);
 }
 
 .wrap {
@@ -97,6 +92,5 @@ h3 {
   *::before,
   *::after {
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }

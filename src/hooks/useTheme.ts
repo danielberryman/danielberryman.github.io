@@ -4,9 +4,13 @@ type Theme = 'dark' | 'light'
 
 const STORAGE_KEY = 'theme'
 
+// Light is the default; a visitor's saved choice wins.
 function readStoredTheme(): Theme {
-  const stored = localStorage.getItem(STORAGE_KEY)
-  return stored === 'light' ? 'light' : 'dark'
+  try {
+    return localStorage.getItem(STORAGE_KEY) === 'dark' ? 'dark' : 'light'
+  } catch {
+    return 'light'
+  }
 }
 
 export function useTheme() {
@@ -14,7 +18,11 @@ export function useTheme() {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
-    localStorage.setItem(STORAGE_KEY, theme)
+    try {
+      localStorage.setItem(STORAGE_KEY, theme)
+    } catch {
+      // Storage can be blocked (private mode); the theme still applies for this visit.
+    }
   }, [theme])
 
   function toggleTheme() {

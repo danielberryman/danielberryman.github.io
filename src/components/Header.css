@@ -1,70 +1,86 @@
-header {
-  padding: 34px 0 0;
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
 }
 
 .masthead {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 30px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--line-bright);
+  gap: 24px;
+  padding: 14px 0;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .avatar {
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  border: 1px solid var(--line-bright);
   object-fit: cover;
 }
 
 .name {
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 nav {
   display: flex;
   align-items: center;
-  gap: 14px;
-  color: var(--vapor);
-  font-size: 0.62rem;
+  gap: 22px;
+  color: var(--text-2);
+  font-size: 0.9rem;
 }
 
-@media (min-width: 640px) {
-  nav {
-    gap: 24px;
-  }
+nav a:hover {
+  color: var(--text);
+}
+
+nav .nav-cta {
+  padding: 7px 14px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 500;
+}
+
+nav .nav-cta:hover {
+  color: var(--on-accent);
+  filter: brightness(1.08);
 }
 
 .theme-toggle {
   padding: 0;
   border: 0;
   background: none;
-  color: var(--vapor);
+  color: var(--text-3);
   font: inherit;
   cursor: pointer;
 }
 
 .theme-toggle:hover {
-  color: var(--purple-light);
+  color: var(--text);
 }
 
 @media (max-width: 639px) {
   .masthead {
     flex-wrap: wrap;
-    gap: 14px 20px;
+    gap: 10px 16px;
   }
 
   nav {
     flex-wrap: wrap;
-    gap: 10px 16px;
+    gap: 8px 16px;
+    font-size: 0.85rem;
   }
 }

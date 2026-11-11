@@ -5,34 +5,28 @@ function Header() {
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <header>
+    <header className="site-header">
       <div className="wrap masthead">
         <a href="/" className="brand">
           <img className="avatar" src="/avatar.jpg" alt="" />
-          <span className="name eyebrow">Daniel Berryman</span>
+          <span className="name">Daniel Berryman</span>
         </a>
 
         <nav>
-          <a className="eyebrow" href="#tests">
-            Tests
-          </a>
-          <a className="eyebrow" href="#kit">
-            Kit
-          </a>
-          <a className="eyebrow" href="#work">
-            Work
-          </a>
-          <a className="eyebrow" href="#contact">
-            Contact
-          </a>
+          <a href="#tests">Tests</a>
+          <a href="#kit">Kit</a>
+          <a href="#work">Work</a>
           <button
             type="button"
-            className="eyebrow theme-toggle"
+            className="theme-toggle"
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
           >
             {theme === 'dark' ? 'Light' : 'Dark'}
           </button>
+          <a className="nav-cta" href="#contact">
+            Contact
+          </a>
         </nav>
       </div>
     </header>

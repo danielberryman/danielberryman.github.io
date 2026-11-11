@@ -111,6 +111,21 @@ const POSTS: Post[] = [
   },
 ]
 
+const PROOF = [
+  '90% fewer code changes per integration',
+  'Consent system passed legal and security review',
+  '7+ years shipping production software',
+]
+
+function SectionHead({ id, label, title }: { id?: string; label: string; title: string }) {
+  return (
+    <header className="section-head" id={id}>
+      <div className="label">{label}</div>
+      <h2>{title}</h2>
+    </header>
+  )
+}
+
 function App() {
   return (
     <>
@@ -118,43 +133,41 @@ function App() {
 
       <main>
         <div className="wrap">
-          <section className="intro">
-            <div className="kicker eyebrow">
-              Software engineer · AI systems consultant · New York
-            </div>
+          <section className="hero">
+            <p className="hero-kicker">Software engineer · AI systems consultant · New York</p>
             <h1>
               You’re paying for AI inference. <span>Can you trust it yet?</span>
             </h1>
-            <p className="intro-copy">
-              I build the kit that makes AI work trustworthy.{' '}
-              <strong>
-                Every result gets checked, agents stay inside safe limits, every model call is on
-                the record, and the same work gets cheaper over time.
-              </strong>
+            <p className="hero-copy">
+              I build the kit that makes AI work trustworthy. Every result gets checked, agents
+              stay inside safe limits, every model call is on the record, and the same work gets
+              cheaper over time.
             </p>
             <div className="actions">
-              <a className="btn primary eyebrow" href={`mailto:${EMAIL}`}>
+              <a className="btn primary" href={`mailto:${EMAIL}`}>
                 Talk about your setup
               </a>
-              <a className="btn eyebrow" href={LINKEDIN} target="_blank" rel="noreferrer">
-                LinkedIn
+              <a className="btn" href="#tests">
+                Take the four tests
               </a>
             </div>
+            <ul className="proof-strip">
+              {PROOF.map((p) => (
+                <li key={p}>{p}</li>
+              ))}
+            </ul>
           </section>
 
-          <section id="tests">
-            <header className="section-heading">
-              <div className="section-label eyebrow">Four tests</div>
-              <h2>Trust is not a feeling. It’s four yes-or-no questions.</h2>
-            </header>
-
-            <ol className="post-list tests">
+          <section>
+            <SectionHead id="tests" label="Four tests" title="Trust is not a feeling. It’s four yes-or-no questions." />
+            <ol className="tests">
               {TESTS.map((t, i) => (
-                <li className="post" key={t.name}>
-                  <span className="post-date eyebrow">0{i + 1}</span>
+                <li className="test" key={t.name}>
+                  <span className="box" aria-hidden="true" />
                   <div>
-                    <h3 className="post-title">{t.name}</h3>
-                    <p className="post-summary">{t.question}</p>
+                    <div className="test-num">0{i + 1}</div>
+                    <h3>{t.name}</h3>
+                    <p>{t.question}</p>
                   </div>
                 </li>
               ))}
@@ -165,15 +178,11 @@ function App() {
             </p>
           </section>
 
-          <section id="kit">
-            <header className="section-heading">
-              <div className="section-label eyebrow">The kit</div>
-              <h2>What the kit does</h2>
-            </header>
-
-            <div className="notes">
+          <section>
+            <SectionHead id="kit" label="The kit" title="What the kit does" />
+            <div className="kit">
               {KIT.map((k) => (
-                <div className="note" key={k.name}>
+                <div className="kit-part" key={k.name}>
                   <h3>{k.name}</h3>
                   <p>{k.text}</p>
                 </div>
@@ -181,15 +190,11 @@ function App() {
             </div>
           </section>
 
-          <section id="work">
-            <header className="section-heading">
-              <div className="section-label eyebrow">Proof</div>
-              <h2>Where I’ve built it</h2>
-            </header>
-
+          <section>
+            <SectionHead id="work" label="Proof" title="Where I’ve built it" />
             <div className="proof">
               <div className="proof-item">
-                <small className="eyebrow">New Visions for Public Schools · 2025 – present</small>
+                <div className="label">New Visions for Public Schools · 2025 – present</div>
                 <p>
                   I built an AI trust kit for the engineering team of a multi-tenant student-data
                   platform. Before handing it over, I ran its security review myself and hardened
@@ -199,7 +204,7 @@ function App() {
                 </p>
               </div>
               <div className="proof-item">
-                <small className="eyebrow">My own systems · every day</small>
+                <div className="label">My own systems · every day</div>
                 <p>
                   I run the same kit on my own work. Agents take on tasks, an independent check
                   accepts or rejects each result, and every run leaves a cost record and an audit
@@ -208,71 +213,55 @@ function App() {
               </div>
             </div>
 
-            <header className="section-heading sub">
-              <div className="section-label eyebrow">Experience</div>
-              <h2>Production record</h2>
-            </header>
-
+            <h3 className="sub-head">Experience</h3>
             <ol className="jobs">
               {JOBS.map((j) => (
                 <li className="job" key={j.org}>
-                  <span className="post-date eyebrow">{j.years}</span>
+                  <div className="label">{j.years}</div>
                   <div>
-                    <h3>
+                    <h4>
                       {j.org} <span>· {j.role}</span>
-                    </h3>
+                    </h4>
                     <p>{j.text}</p>
                   </div>
                 </li>
               ))}
             </ol>
-            <p className="stack eyebrow">
+            <p className="stack">
               TypeScript · Node.js · React · Angular · NestJS · PostgreSQL · MongoDB · Docker · AWS
               · Agent orchestration · Sandboxed execution · Verification
             </p>
             <div className="actions">
-              <a className="btn eyebrow" href={RESUME_PDF} download>
-                Résumé (PDF)
+              <a className="btn" href={RESUME_PDF} download>
+                Download résumé (PDF)
               </a>
-              <a className="btn eyebrow" href={RESUME_DOCX} download>
-                Résumé (Word)
+              <a className="btn" href={RESUME_DOCX} download>
+                Download résumé (Word)
               </a>
             </div>
           </section>
 
-          <section id="notes">
-            <header className="section-heading">
-              <div className="section-label eyebrow">Notes</div>
-              <h2>How I think about it</h2>
-            </header>
-
-            <ol className="post-list">
+          <section>
+            <SectionHead id="notes" label="Notes" title="How I think about it" />
+            <div className="notes">
               {POSTS.map((post) => (
-                <li className="post" key={post.title}>
-                  <span className="post-date eyebrow">{post.category}</span>
-                  <div>
-                    <h3 className="post-title">{post.title}</h3>
-                    <p className="post-summary">{post.summary}</p>
-                  </div>
-                </li>
+                <article className="note" key={post.title}>
+                  <div className="label">{post.category}</div>
+                  <h3>{post.title}</h3>
+                  <p>{post.summary}</p>
+                </article>
               ))}
-            </ol>
+            </div>
           </section>
 
-          <section id="about">
-            <header className="section-heading">
-              <div className="section-label eyebrow">About</div>
-              <h2>A little context</h2>
-            </header>
-
-            <div className="about-grid">
-              <div className="about-mark" aria-hidden="true">
-                +
-              </div>
+          <section>
+            <SectionHead id="about" label="About" title="A little context" />
+            <div className="about">
+              <img className="about-photo" src="/avatar.jpg" alt="Daniel Berryman" loading="lazy" />
               <div className="about-copy">
                 <p>
-                  I’m a software engineer in New York. I build the systems that let a company{' '}
-                  <strong>stop checking AI work by hand.</strong>
+                  I’m a software engineer in New York. I build the systems that let a company stop
+                  checking AI work by hand.
                 </p>
                 <p>
                   Before software, I spent years as a professional performer. That is where I
@@ -282,31 +271,28 @@ function App() {
             </div>
           </section>
 
-          <section id="contact" className="contact">
-            <header className="section-heading">
-              <div className="section-label eyebrow">Contact</div>
-              <h2>Let’s look at your setup</h2>
-            </header>
+          <section className="contact">
+            <SectionHead id="contact" label="Contact" title="Let’s look at your setup" />
             <p className="contact-copy">
               Tell me how your team uses AI today, and I’ll tell you which of the four tests you
               pass.
             </p>
-            <a className="contact-mail" href={`mailto:${EMAIL}`}>
-              {EMAIL}
-            </a>
+            <div className="actions">
+              <a className="btn primary" href={`mailto:${EMAIL}`}>
+                {EMAIL}
+              </a>
+              <a className="btn" href={LINKEDIN} target="_blank" rel="noreferrer">
+                LinkedIn
+              </a>
+            </div>
           </section>
         </div>
       </main>
 
       <footer>
         <div className="wrap footer-inner">
-          <h2 className="footer-title">
-            Daniel
-            <br />
-            <span>Berryman</span>
-          </h2>
-
-          <div className="footer-links eyebrow">
+          <span>© {new Date().getFullYear()} Daniel Berryman</span>
+          <div className="footer-links">
             <a href={GITHUB} target="_blank" rel="noreferrer">
               GitHub
             </a>
