@@ -233,10 +233,10 @@ function App() {
             </p>
             <div className="actions">
               <a className="btn" href={RESUME_PDF} download>
-                Download résumé (PDF)
+                Download resume (PDF)
               </a>
               <a className="btn" href={RESUME_DOCX} download>
-                Download résumé (Word)
+                Download resume (Word)
               </a>
             </div>
           </section>
@@ -301,7 +301,7 @@ function App() {
             </a>
             <a href={`mailto:${EMAIL}`}>Email</a>
             <a href={RESUME_PDF} download>
-              Résumé
+              Resume
             </a>
           </div>
         </div>
