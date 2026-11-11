@@ -13,14 +13,17 @@ function Header() {
         </a>
 
         <nav>
-          <a className="eyebrow" href="#writing">
-            Writing
+          <a className="eyebrow" href="#tests">
+            Tests
           </a>
-          <a className="eyebrow" href="#notes">
-            Notes
+          <a className="eyebrow" href="#kit">
+            Kit
           </a>
-          <a className="eyebrow" href="#about">
-            About
+          <a className="eyebrow" href="#work">
+            Work
+          </a>
+          <a className="eyebrow" href="#contact">
+            Contact
           </a>
           <button
             type="button"

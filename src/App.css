@@ -304,3 +304,158 @@ footer {
   color: var(--vapor);
   font-size: 0.6rem;
 }
+
+/* ---- hire layout additions ---- */
+
+.intro h1 {
+  font-size: clamp(2.2rem, 7.4vw, 5rem);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 20px;
+  border: 1px solid var(--line-bright);
+  color: var(--signal);
+  font-size: 0.62rem;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.btn:hover {
+  border-color: var(--purple-light);
+  color: var(--signal);
+}
+
+.btn.primary {
+  background: var(--purple-light);
+  border-color: var(--purple-light);
+  color: var(--void);
+}
+
+.btn.primary:hover {
+  background: var(--signal);
+  border-color: var(--signal);
+  color: var(--void);
+}
+
+.tests .post-date {
+  color: var(--amber);
+  font-size: 0.8rem;
+}
+
+.verdict {
+  max-width: 650px;
+  margin: 28px 0 0;
+  color: var(--signal);
+  font-size: 1.05rem;
+}
+
+.verdict a {
+  color: var(--purple-light);
+  border-bottom: 1px solid var(--purple-light);
+}
+
+.note h3 {
+  color: var(--signal);
+}
+
+.proof {
+  display: grid;
+  gap: 0;
+}
+
+.proof-item {
+  padding: 24px 0 26px;
+  border-bottom: 1px solid var(--line);
+}
+
+.proof-item small {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--cyan);
+  font-size: 0.56rem;
+}
+
+.proof-item p {
+  max-width: 680px;
+  margin: 0;
+  color: var(--vapor);
+}
+
+.section-heading.sub {
+  margin-top: 56px;
+}
+
+.jobs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.job {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  padding: 22px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+@media (min-width: 640px) {
+  .job {
+    grid-template-columns: 150px 1fr;
+    gap: 24px;
+  }
+}
+
+.job h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  letter-spacing: -0.03em;
+}
+
+.job h3 span {
+  color: var(--muted);
+}
+
+.job p {
+  max-width: 650px;
+  margin: 8px 0 0;
+  color: var(--vapor);
+  font-size: 0.92rem;
+}
+
+.stack {
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 0.56rem;
+  line-height: 2;
+}
+
+.contact-copy {
+  max-width: 600px;
+  margin: 28px 0 16px;
+  color: var(--vapor);
+  font-size: 1.05rem;
+}
+
+.contact-mail {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: clamp(1.1rem, 4vw, 1.8rem);
+  letter-spacing: -0.03em;
+  border-bottom: 1px solid var(--purple-light);
+  overflow-wrap: anywhere;
+}
+
+.footer-links {
+  flex-wrap: wrap;
+}

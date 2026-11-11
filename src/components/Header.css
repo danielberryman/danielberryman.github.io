@@ -56,3 +56,15 @@ nav {
 .theme-toggle:hover {
   color: var(--purple-light);
 }
+
+@media (max-width: 639px) {
+  .masthead {
+    flex-wrap: wrap;
+    gap: 14px 20px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    gap: 10px 16px;
+  }
+}
