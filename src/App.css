@@ -283,6 +283,12 @@ main section.hero {
   font-size: 0.95rem;
 }
 
+.sub-copy {
+  max-width: 680px;
+  margin: 0 0 24px;
+  color: var(--text);
+}
+
 .sub-head {
   margin: 52px 0 8px;
   font-size: 1.2rem;

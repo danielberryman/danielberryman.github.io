@@ -311,6 +311,19 @@ function App() {
           </section>
 
           <section>
+            <SectionHead id="offers" label="Work with me" title="Start small. Own all of it." />
+            <div className="offers">
+              {OFFERS.map((o) => (
+                <div className="proof-item offer" key={o.name}>
+                  <div className="label">{o.name}</div>
+                  <div className="offer-price">{o.price}</div>
+                  <p>{o.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section>
             <SectionHead
               id="promise"
               label="The promise"
@@ -362,7 +375,7 @@ function App() {
             </div>
 
             <h3 className="sub-head">What I’ve already cut</h3>
-            <p className="verdict">
+            <p className="sub-copy">
               Measured on my own work, priced at Claude Opus API rates. Small samples: a direction,
               not a promise.
             </p>
@@ -410,19 +423,6 @@ function App() {
               <a className="btn" href={RESUME_DOCX} download>
                 Download resume (Word)
               </a>
-            </div>
-          </section>
-
-          <section>
-            <SectionHead id="offers" label="Work with me" title="Start small. Own all of it." />
-            <div className="offers">
-              {OFFERS.map((o) => (
-                <div className="proof-item offer" key={o.name}>
-                  <div className="label">{o.name}</div>
-                  <div className="offer-price">{o.price}</div>
-                  <p>{o.text}</p>
-                </div>
-              ))}
             </div>
           </section>
 
