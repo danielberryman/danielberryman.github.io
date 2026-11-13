@@ -5,7 +5,6 @@ const EMAIL = 'dberrymandev@gmail.com'
 const LINKEDIN = 'https://www.linkedin.com/in/daniel-berryman'
 const GITHUB = 'https://github.com/danielberryman'
 const RESUME_PDF = '/resume/Daniel_Berryman_Resume.pdf'
-const RESUME_DOCX = '/resume/Daniel_Berryman_Resume.docx'
 
 interface Test {
   name: string
@@ -419,9 +418,6 @@ function App() {
             <div className="actions">
               <a className="btn" href={RESUME_PDF} download>
                 Download resume (PDF)
-              </a>
-              <a className="btn" href={RESUME_DOCX} download>
-                Download resume (Word)
               </a>
             </div>
           </section>
