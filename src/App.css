@@ -252,6 +252,27 @@ main section.hero {
   color: var(--text-2);
 }
 
+/* ---- offers ---- */
+
+.offers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 720px) {
+  .offers {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.offer-price {
+  margin-bottom: 10px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
 .sub-head {
   margin: 52px 0 8px;
   font-size: 1.2rem;

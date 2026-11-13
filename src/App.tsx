@@ -16,19 +16,25 @@ const TESTS: Test[] = [
   {
     name: 'Done means done',
     question:
-      'When your system says a task is finished, has something other than the agent proved it?',
+      'When AI says a task is finished, has something other than the AI proved it?',
   },
   {
-    name: 'Secure',
-    question: 'Do you know what each agent can read, change, and send outside your walls?',
+    name: 'Safe limits',
+    question: 'Do you know what each AI tool can read, change, and send outside your walls?',
   },
   {
-    name: 'Visible spend',
-    question: 'Can you say what one finished task costs?',
+    name: 'Moving work',
+    question:
+      'Can you say how long a request takes to go from Slack to a merged PR, and is that time getting shorter?',
   },
   {
-    name: 'Cheaper over time',
-    question: 'Does the same work cost less this month than last month?',
+    name: 'Spend that falls',
+    question: 'Can you say what one finished task costs, and is it lower than last month?',
+  },
+  {
+    name: 'Free to switch',
+    question:
+      'Could you change your model provider next month without losing your rules, checks, or context?',
   },
 ]
 
@@ -37,22 +43,86 @@ interface KitPart {
   text: string
 }
 
-const KIT: KitPart[] = [
+const DOORS: KitPart[] = [
   {
-    name: 'Independent checks',
-    text: 'A separate process checks each result against the real outcome, never against the agent’s own report. Each result is sealed into an audit trail that nobody can quietly rewrite.',
+    name: 'Protect',
+    text: 'Your rules for customer data, security, and compliance become checks that every AI change must pass. Your security people can see that the rules hold.',
   },
   {
-    name: 'Gates at the edges',
-    text: 'Agents run in a sandbox with only the access they need. Data passes a filter before it reaches an outside model. What can’t be made safe gets refused, not routed around.',
+    name: 'Then flow',
+    text: 'Once the checks hold, AI changes are safe to merge. Requests from Slack and tickets become PRs that move quickly and meet your standards.',
+  },
+]
+
+const KIT: KitPart[] = [
+  {
+    name: 'A filter on the way in',
+    text: 'Tickets and requests pass a PII filter before any model sees them.',
+  },
+  {
+    name: 'Agents off the host',
+    text: 'Agents work in a container, never on your machine. A step on the host needs approval. Each agent gets only the access the work needs.',
+  },
+  {
+    name: 'Checks on the way out',
+    text: 'Every change passes your checks before it merges: tests, a running app, and guards for databases, PII, and outbound calls. A separate process checks the real result, never the agent’s own report.',
+  },
+  {
+    name: 'Open in the middle',
+    text: 'Your team keeps the tools and models it likes. Switch any of them; the checks stay.',
   },
   {
     name: 'A record of every call',
-    text: 'For every task you see the model, the cost, what went in, and what came out.',
+    text: 'For every task you see the model, the cost, what went in, and what came out, in an audit trail that nobody can quietly rewrite.',
   },
   {
     name: 'Stored work',
     text: 'When a model works something out, the kit keeps the result. Repeated steps become plain code, so you stop paying for the same thinking twice.',
+  },
+]
+
+interface Offer {
+  name: string
+  price: string
+  text: string
+}
+
+const OFFERS: Offer[] = [
+  {
+    name: 'The five-test review',
+    price: '$5,000 · one week',
+    text: 'I review your AI setup against the five tests and leave one running check behind. You get a written report: which tests pass and fail, why, and the first fix for each. The fee counts toward the build. Founding clients: $2,500 in return for a public case study.',
+  },
+  {
+    name: 'Build your checks',
+    price: 'From $30,000 · 90 days',
+    text: 'I turn your rules into checks that every AI change must pass, on your own inference. Your team changes one rule on its own before I leave. You own all of it.',
+  },
+  {
+    name: 'Keep it current',
+    price: 'From $3,000 a month',
+    text: 'New models and tools arrive every month. I test each one against your checks, so you can adopt it with proof.',
+  },
+  {
+    name: 'Or hire me',
+    price: 'Full time',
+    text: 'I am open to AI enablement and platform roles in New York or remote.',
+  },
+]
+
+interface Finding {
+  name: string
+  text: string
+}
+
+const FOUND: Finding[] = [
+  {
+    name: 'Development databases open to the Wi-Fi',
+    text: 'Mongo and Postgres containers were reachable over the Docker network by anyone on the same Wi-Fi, with no passwords. The fix: bind to localhost, set passwords even in development, and keep real data out.',
+  },
+  {
+    name: 'Shell history inside the agent’s container',
+    text: 'The developer’s shell history was mounted into the agent’s container. History holds tokens and passwords, and the agent could read them and send them out. The fix: mount nothing from home by default, and guard outbound calls.',
   },
 ]
 
@@ -139,16 +209,16 @@ function App() {
               You’re paying for AI inference. <span>Do you trust it yet?</span>
             </h1>
             <p className="hero-copy">
-              I build the kit that makes AI work trustworthy. Every result gets checked, agents
-              stay inside safe limits, every model call is on the record, and the same work gets
-              cheaper over time.
+              When you do, your engineers stop writing and checking code by hand. They own the
+              design, the rules, and the checks, and the AI builds inside them. I build the kit
+              that makes that safe.
             </p>
             <div className="actions">
               <a className="btn primary" href={`mailto:${EMAIL}`}>
                 Talk about your setup
               </a>
               <a className="btn" href="#tests">
-                Take the four tests
+                Take the five tests
               </a>
             </div>
             <ul className="proof-strip">
@@ -159,7 +229,7 @@ function App() {
           </section>
 
           <section>
-            <SectionHead id="tests" label="Four tests" title="Trust is not a feeling. It’s four yes-or-no questions." />
+            <SectionHead id="tests" label="Five tests" title="Trust is not a feeling. It’s five yes-or-no questions." />
             <ol className="tests">
               {TESTS.map((t, i) => (
                 <li className="test" key={t.name}>
@@ -179,7 +249,23 @@ function App() {
           </section>
 
           <section>
-            <SectionHead id="kit" label="The kit" title="What the kit does" />
+            <SectionHead
+              id="promise"
+              label="The promise"
+              title="Use AI fully, without risking your customers’ data or your standards."
+            />
+            <div className="kit">
+              {DOORS.map((d) => (
+                <div className="kit-part" key={d.name}>
+                  <h3>{d.name}</h3>
+                  <p>{d.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <SectionHead id="kit" label="The kit" title="Fixed at both ends, open in the middle" />
             <div className="kit">
               {KIT.map((k) => (
                 <div className="kit-part" key={k.name}>
@@ -194,23 +280,33 @@ function App() {
             <SectionHead id="work" label="Proof" title="Where I’ve built it" />
             <div className="proof">
               <div className="proof-item">
-                <div className="label">New Visions for Public Schools · 2025 – present</div>
+                <div className="label">A team on a multi-tenant data platform · current role</div>
                 <p>
-                  I built an AI trust kit for the engineering team of a multi-tenant student-data
-                  platform. Before handing it over, I ran its security review myself and hardened
-                  what the review found. Before that, I rebuilt the team’s daily work around an AI
-                  coding assistant: I moved repeated model steps into scripts and stored state, and
-                  measured a lasting rise in shipped work.
+                  I built a team kit so every engineer could use AI coding agents safely. Tickets
+                  come in through a PII filter. Agents work in containers, never on the host.
+                  Every result passes checks and guards for tests, databases, PII, and outbound
+                  calls. The middle stays open to any tool. It runs on the team’s own inference,
+                  and it stays with them.
                 </p>
               </div>
               <div className="proof-item">
                 <div className="label">My own systems · every day</div>
                 <p>
-                  I run the same kit on my own work. Agents take on tasks, an independent check
-                  accepts or rejects each result, and every run leaves a cost record and an audit
-                  trail.
+                  I run my own systems this way every day. I write the goals, rules, and checks;
+                  AI writes the code inside them; a separate check accepts or rejects each result
+                  before anything ships.
                 </p>
               </div>
+            </div>
+
+            <h3 className="sub-head">Things I found recently</h3>
+            <div className="kit found">
+              {FOUND.map((f) => (
+                <div className="kit-part" key={f.name}>
+                  <h3>{f.name}</h3>
+                  <p>{f.text}</p>
+                </div>
+              ))}
             </div>
 
             <h3 className="sub-head">Experience</h3>
@@ -238,6 +334,19 @@ function App() {
               <a className="btn" href={RESUME_DOCX} download>
                 Download resume (Word)
               </a>
+            </div>
+          </section>
+
+          <section>
+            <SectionHead id="offers" label="Work with me" title="Start small. Own all of it." />
+            <div className="offers">
+              {OFFERS.map((o) => (
+                <div className="proof-item offer" key={o.name}>
+                  <div className="label">{o.name}</div>
+                  <div className="offer-price">{o.price}</div>
+                  <p>{o.text}</p>
+                </div>
+              ))}
             </div>
           </section>
 
@@ -274,7 +383,7 @@ function App() {
           <section className="contact">
             <SectionHead id="contact" label="Contact" title="Let’s look at your setup" />
             <p className="contact-copy">
-              Tell me how your team uses AI today, and I’ll tell you which of the four tests you
+              Tell me how your team uses AI today, and I’ll tell you which of the five tests you
               pass.
             </p>
             <div className="actions">

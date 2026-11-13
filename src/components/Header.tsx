@@ -16,6 +16,7 @@ function Header() {
           <a href="#tests">Tests</a>
           <a href="#kit">Kit</a>
           <a href="#work">Work</a>
+          <a href="#offers">Offers</a>
           <button
             type="button"
             className="theme-toggle"
