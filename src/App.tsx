@@ -89,9 +89,9 @@ interface Offer {
 
 const OFFERS: Offer[] = [
   {
-    name: 'The five-test review',
+    name: 'The AI spend review',
     price: '$5,000 · one week',
-    text: 'I review your AI setup against the five tests and leave one running check behind. You get a written report: which tests pass and fail, why, and the first fix for each. The fee counts toward the build. Founding clients: $2,500 in return for a public case study.',
+    text: 'I find what your AI spend buys, where it is wasted, and where your data goes. Read-only access to billing and admin consoles is enough. On Friday you get money to save, risks to close, and one fix already running, such as a spend cap or a data rule. The fee counts toward the build. Founding clients: $2,500 in return for a public case study.',
   },
   {
     name: 'Build your checks',
@@ -106,7 +106,34 @@ const OFFERS: Offer[] = [
   {
     name: 'Or hire me',
     price: 'Full time',
-    text: 'I am open to AI enablement and platform roles in New York or remote.',
+    text: 'I am open to AI engineering and AI enablement roles in New York or remote.',
+  },
+]
+
+const CUTS: Finding[] = [
+  {
+    name: 'Context the code could hand over',
+    text: 'Code gathers the exact place to change, then one model call makes the change. On the two smallest real changes: $1.43 down to $0.04, and $1.49 down to $0.47. On larger changes the saving shrank, so I split them first.',
+  },
+  {
+    name: 'The wrong model',
+    text: 'The cheap model tries first, and a free check decides when to move up. About $2.50 against $3.93 on the top model alone.',
+  },
+  {
+    name: 'Big changes in one go',
+    text: 'The same change in four small, checked steps: $0.67 to $1.79, against $7.77 in one call.',
+  },
+  {
+    name: 'Searching for the code',
+    text: 'A tool that points the model at the exact code behind a styling change. Searches fell from about 14 to about 4, and cost per change from about $2.50 to $0.85.',
+  },
+  {
+    name: 'Work a script can do',
+    text: 'I replaced token burners with plain scripts. One background job went from 103 model calls every 15 minutes to 3.',
+  },
+  {
+    name: 'The model checking itself',
+    text: 'Automated checks answer “did it do it?” for free, so no model pays to grade its own work.',
   },
 ]
 
@@ -188,18 +215,18 @@ const ROLES = [
   },
   {
     name: 'AI Engineer',
-    text: 'Agent systems with sandboxes, independent checks, and a cost record for every call.',
+    text: 'Agent systems with sandboxes, independent checks, model routing, and a cost record for every call.',
   },
   {
     name: 'AI Enablement',
-    text: 'Help a team adopt AI coding tools, and measure what it gains.',
+    text: 'Roll out AI coding tools to a team, measure what they cost and gain, and keep them safe.',
   },
 ]
 
 const PROOF = [
-  '90% fewer code changes per integration',
-  'Consent system passed legal and security review',
-  '7+ years shipping production software',
+  'About 35% lower model cost by routing on a free check',
+  'Small changes 68–97% cheaper with code-gathered context',
+  'Agent kit passed a security review',
 ]
 
 function SectionHead({ id, label, title }: { id?: string; label: string; title: string }) {
@@ -224,13 +251,12 @@ function App() {
               You’re paying for AI inference. <span>Do you trust it yet?</span>
             </h1>
             <p className="hero-copy">
-              When you do, your engineers stop writing and checking code by hand. They own the
-              design, the rules, and the checks, and the AI builds inside them. I build the kit
-              that makes that safe.
+              In one week, I find what your AI spend buys, cut the waste, and check where your
+              data goes. Then I build the checks that let your engineers use AI fully and safely.
             </p>
             <div className="actions">
-              <a className="btn primary" href={`mailto:${EMAIL}`}>
-                Talk about your setup
+              <a className="btn primary" href={`mailto:${EMAIL}?subject=AI%20spend%20review`}>
+                Book an AI spend review
               </a>
               <a className="btn" href="#tests">
                 Take the five tests
@@ -335,6 +361,20 @@ function App() {
               </div>
             </div>
 
+            <h3 className="sub-head">What I’ve already cut</h3>
+            <p className="verdict">
+              Measured on my own work, priced at Claude Opus API rates. Small samples: a direction,
+              not a promise.
+            </p>
+            <div className="kit found">
+              {CUTS.map((c) => (
+                <div className="kit-part" key={c.name}>
+                  <h3>{c.name}</h3>
+                  <p>{c.text}</p>
+                </div>
+              ))}
+            </div>
+
             <h3 className="sub-head">Things I found recently</h3>
             <div className="kit found">
               {FOUND.map((f) => (
@@ -419,8 +459,8 @@ function App() {
           <section className="contact">
             <SectionHead id="contact" label="Contact" title="Let’s talk" />
             <p className="contact-copy">
-              Tell me how your team uses AI today, and I’ll tell you which of the five tests you
-              pass. Hiring? I’m open to full-time roles.
+              Tell me your monthly AI bill and how your team uses AI today. I’ll tell you which of
+              the five tests you pass. Hiring? I’m open to full-time roles.
             </p>
             <div className="actions">
               <a className="btn primary" href={`mailto:${EMAIL}`}>
