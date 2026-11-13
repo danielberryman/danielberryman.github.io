@@ -13,6 +13,7 @@ function Header() {
         </a>
 
         <nav>
+          <a href="#open-to">Open to</a>
           <a href="#tests">Tests</a>
           <a href="#kit">Kit</a>
           <a href="#work">Work</a>

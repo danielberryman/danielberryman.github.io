@@ -228,6 +228,16 @@ main section.hero {
   font-size: 0.97rem;
 }
 
+@media (min-width: 900px) {
+  .kit.roles {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.roles + .verdict {
+  margin-top: 24px;
+}
+
 /* ---- proof + experience ---- */
 
 .proof {

@@ -181,6 +181,21 @@ const POSTS: Post[] = [
   },
 ]
 
+const ROLES = [
+  {
+    name: 'Software Engineer',
+    text: '7+ years shipping production TypeScript, Node, and React.',
+  },
+  {
+    name: 'AI Engineer',
+    text: 'Agent systems with sandboxes, independent checks, and a cost record for every call.',
+  },
+  {
+    name: 'AI Enablement',
+    text: 'Help a team adopt AI coding tools, and measure what it gains.',
+  },
+]
+
 const PROOF = [
   '90% fewer code changes per integration',
   'Consent system passed legal and security review',
@@ -204,7 +219,7 @@ function App() {
       <main>
         <div className="wrap">
           <section className="hero">
-            <p className="hero-kicker">Software engineer · AI systems consultant · New York</p>
+            <p className="hero-kicker">Software engineer · AI engineer · Open to full-time and consulting</p>
             <h1>
               You’re paying for AI inference. <span>Do you trust it yet?</span>
             </h1>
@@ -226,6 +241,27 @@ function App() {
                 <li key={p}>{p}</li>
               ))}
             </ul>
+          </section>
+
+          <section>
+            <SectionHead id="open-to" label="Open to" title="Roles I’m open to" />
+            <div className="kit roles">
+              {ROLES.map((r) => (
+                <div className="kit-part" key={r.name}>
+                  <h3>{r.name}</h3>
+                  <p>{r.text}</p>
+                </div>
+              ))}
+            </div>
+            <p className="verdict">Full-time, contract, or consulting. New York or remote.</p>
+            <div className="actions">
+              <a className="btn primary" href={`mailto:${EMAIL}`}>
+                Email me
+              </a>
+              <a className="btn" href={RESUME_PDF} download>
+                Resume (PDF)
+              </a>
+            </div>
           </section>
 
           <section>
@@ -381,10 +417,10 @@ function App() {
           </section>
 
           <section className="contact">
-            <SectionHead id="contact" label="Contact" title="Let’s look at your setup" />
+            <SectionHead id="contact" label="Contact" title="Let’s talk" />
             <p className="contact-copy">
               Tell me how your team uses AI today, and I’ll tell you which of the five tests you
-              pass.
+              pass. Hiring? I’m open to full-time roles.
             </p>
             <div className="actions">
               <a className="btn primary" href={`mailto:${EMAIL}`}>
